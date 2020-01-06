@@ -1,18 +1,19 @@
 package m_practice;
 
-//Write a function rotate(ar[], d, n) that rotates arr[] of size n by d elements.
 public class ArrayRotation {
 	
-	static void rotate(int[]arr, int rotate, int arr_size){
+	/*Write a function rotate(ar[], d, n) that rotates arr[] of size n by d elements.*/
+	
+	static void rotate(int[]arr, int rotation_no, int arr_size){
 		
-		int[]arr1 = new int[rotate];
-		for(int i = 0; i< rotate; i++) {
+		int[]arr1 = new int[rotation_no];
+		for(int i = 0; i< rotation_no; i++) {
 			arr1[i] = arr[i]; 
-			pushLeft(arr, rotate, arr_size);
+			pushLeft(arr, arr_size);
 		}
 	}
 	
-	static int[] pushLeft(int[]arr, int rotate, int arr_size){
+	static int[] pushLeft(int[]arr, int arr_size){
 		int i;
 		int temp_val = arr[0];
 		
