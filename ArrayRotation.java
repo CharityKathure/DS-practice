@@ -6,9 +6,7 @@ public class ArrayRotation {
 	
 	static void rotate(int[]arr, int rotation_no, int arr_size){
 		
-		int[]arr1 = new int[rotation_no];
 		for(int i = 0; i< rotation_no; i++) {
-			arr1[i] = arr[i]; 
 			pushLeft(arr, arr_size);
 		}
 	}
