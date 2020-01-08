@@ -77,6 +77,7 @@ public class AddTwoNumberLinkedList {
 			System.out.print(n.data + " ");
 			n = n.next;
 		}
+		System.out.println(" ");
 	}
 	
 	public static void main(String args[]) {
@@ -91,7 +92,6 @@ public class AddTwoNumberLinkedList {
 		System.out.print("LinkedList1: ");
 		printList(head1);
 		
-		System.out.println(" ");
 		
 		AddTwoNumberLinkedList l2 = new AddTwoNumberLinkedList();
 		l2.head2 = new ListNode(5);
@@ -101,17 +101,13 @@ public class AddTwoNumberLinkedList {
 		l2.head2.next = l2Sec;
 		l2Sec.next = l2Trd;
 		
-		System.out.println(" ");
 		System.out.print("LinkedList2: ");
 		printList(head2);
-		System.out.println(" ");
 		//reverse LinkedLists
 		
 		//sum LinkedList values
 		ListNode sumList = addTwoNumbers(head1, head2);
-		System.out.println(" ");
-		System.out.print("LinkedLists Sum: ");
+		System.out.print("Sum: ");
 		printList(sumList);
-		System.out.println(" ");
 	}
 }
