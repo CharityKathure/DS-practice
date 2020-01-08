@@ -36,20 +36,19 @@ public class AddTwoNumberLinkedList {
         	carry = l2Sec.data / 10;
         	l2Sec.data = l2Sec.data % 10;
 
-        	if(prevNode != null) {
-        		ListNode l3Sec = new ListNode(l2Sec.data);
-        		prevNode.next = l3Sec;
-        	} else {
+        	if(prevNode == null) {
         		AddTwoNumberLinkedList l3 = new AddTwoNumberLinkedList();
         		l3.head3 = new ListNode(l2Sec.data);
         		prevNode = l3.head3;
+        	} else {
+        		prevNode.next = new ListNode(l2Sec.data);
         	}
         	
         	l1 = l1.next;
         	l2 = l2.next;
         }
         
-        printList(prevNode);
+        //printList(prevNode);
 		return prevNode;
     }
 	
@@ -107,6 +106,10 @@ public class AddTwoNumberLinkedList {
 		//reverse LinkedLists
 		
 		//sum LinkedList values
-		addTwoNumbers(head1, head2);
+		ListNode sumList = addTwoNumbers(head1, head2);
+		System.out.println(" ");
+		System.out.print("LinkedList Sum: ");
+		printList(sumList);
+		System.out.println(" ");
 	}
 }
