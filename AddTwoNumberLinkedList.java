@@ -1,5 +1,7 @@
 package m_practice;
 
+import java.util.Stack;
+
 /*
  * You are given two non-empty linked lists representing two non-negative integers. 
  * The digits are stored in reverse order and each of their nodes contain a single digit. 
@@ -10,6 +12,7 @@ public class AddTwoNumberLinkedList {
 	
 	static ListNode head1;
 	static ListNode head2;
+	static ListNode head3;
 	
 	static class ListNode {
 		int data;
@@ -23,13 +26,31 @@ public class AddTwoNumberLinkedList {
 	}
 	
 	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		AddTwoNumberLinkedList l3 = new AddTwoNumberLinkedList();
+		int carry = 0;
+		ListNode prevNode = null;
         while(l1 != null || l2 != null) {
+        	
         	ListNode l2Sec = new ListNode(l1.data + l2.data);
+        	
+        	l2Sec.data  = l2Sec.data + carry;
+        	carry = l2Sec.data / 10;
+        	l2Sec.data = l2Sec.data % 10;
+
+        	if(prevNode != null) {
+        		ListNode l3Sec = new ListNode(l2Sec.data);
+        		prevNode.next = l3Sec;
+        	} else {
+        		AddTwoNumberLinkedList l3 = new AddTwoNumberLinkedList();
+        		l3.head3 = new ListNode(l2Sec.data);
+        		prevNode = l3.head3;
+        	}
+        	
         	l1 = l1.next;
         	l2 = l2.next;
         }
-		return l1;
+        
+        printList(prevNode);
+		return prevNode;
     }
 	
 	static ListNode reverse(ListNode node) {
@@ -72,9 +93,9 @@ public class AddTwoNumberLinkedList {
 		System.out.println(" ");
 		
 		AddTwoNumberLinkedList l2 = new AddTwoNumberLinkedList();
-		l2.head2 = new ListNode(7);
-		ListNode l2Sec = new ListNode(0);
-		ListNode l2Trd = new ListNode(8);
+		l2.head2 = new ListNode(5);
+		ListNode l2Sec = new ListNode(6);
+		ListNode l2Trd = new ListNode(4);
 		
 		l2.head2.next = l2Sec;
 		l2Sec.next = l2Trd;
@@ -82,7 +103,7 @@ public class AddTwoNumberLinkedList {
 		System.out.println(" ");
 		System.out.print("LinkedList2: ");
 		printList(head2);
-		
+		System.out.println(" ");
 		//reverse LinkedLists
 		
 		//sum LinkedList values
