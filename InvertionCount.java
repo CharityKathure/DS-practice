@@ -77,11 +77,13 @@ public class InvertionCount {
 	
 	public static void main(String args[]) {
 		int arr[] = new int[] {2, 4, 1, 3, 5}; 
+		
+		//Method 1: Nested Loop
 		int count = invCT(arr);
 		System.out.println();
 		System.out.println("Inversion Count: " + count);
 		
-		//count using merge sort
+		//Method 2: count using merge sort
 		int mergeCount = countmergeSort(arr, 0, arr.length - 1);
 		System.out.println("MergeSort Inversion Count: " + mergeCount);
 	}
