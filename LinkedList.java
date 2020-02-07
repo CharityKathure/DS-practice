@@ -97,6 +97,29 @@ public class LinkedList {
 		prev.next=temp.next;
 	}
 	
+	static int listLength() {
+		Node temp = head;
+		int count = 0;
+		while(temp!=null) {
+			temp=temp.next;
+			count++;
+		}
+		
+		return count;		
+	}
+	static void nthNode(int n) {
+		
+		Node temp = head;
+		for(int i=0; temp!=null && i<n-1; i++) {
+			temp=temp.next;
+		}
+		
+		if(temp==null || temp.next==null) {
+			return;
+		}
+		
+		System.out.print(temp.data);
+	}
 	public static void main(String[] args) {
 		LinkedList llist = new LinkedList();
 		
@@ -131,5 +154,14 @@ public class LinkedList {
 		System.out.println("");
 		System.out.print("List 5: ");
 		printList();
+		
+		System.out.println("");
+		System.out.println("List Length: " + listLength());
+		
+		System.out.println("");
+		
+		int nth = 1;
+		System.out.print(nth+"th Node is: ");
+		nthNode(nth);
 	}
 }
