@@ -9,7 +9,7 @@ import java.util.*;
  * given 1, return "A". Given 27, return "AA".
  */
 
-public class Practice2 {
+public class SpreadsheetEncoding {
 	
 	static String excelConvert(Hashtable<Integer, Character> h, int n) {
 		if(n<=1) {
