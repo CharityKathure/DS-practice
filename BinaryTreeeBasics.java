@@ -1,5 +1,8 @@
 package binaryTrees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Node{
 	int key;
 	Node left, right;
@@ -80,6 +83,32 @@ public class BinaryTreeeBasics {
 			printGivenLevel(node.right, level-1);
 		}
 	}
+	
+	
+	void insert(Node node, int val) {
+		Queue<Node> q = new LinkedList<>();
+		
+		q.add(node);
+		while(!q.isEmpty()) {
+			node = q.peek();
+			q.poll();
+			
+			if(node.left == null) {
+				node.left = new Node(val);
+				break;
+			} else {
+				q.add(node.left);
+			}
+			if(node.right == null) {
+				node.right = new Node(val);
+				break;
+			} else {
+				q.add(node.right);
+			}
+			
+		
+		}
+	}
 	 
 	public static void main(String args[]) {
 		
@@ -108,7 +137,11 @@ public class BinaryTreeeBasics {
 		System.out.print("Level Order/Breadth First Traversal: ");
 		bt.printLevelOrder(bt.root);
 		System.out.println();
+		
+		bt.insert(bt.root, 6);
+		System.out.print("InOrder Traversal after Insert: ");
+		bt.printInorder(bt.root);
+		System.out.println();
+		
 	}
-	
-
 }
