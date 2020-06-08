@@ -105,8 +105,81 @@ public class BinaryTreeeBasics {
 			} else {
 				q.add(node.right);
 			}
-			
 		
+		}
+	}
+	
+	Node delete(Node node, int val) {
+		if(node == null) {
+			return null;
+		}
+		if(node.left == null && node.right == null) {
+			if(node.key == val) {
+				return null;
+			} else {
+				return node;
+			}
+		}
+		
+		Queue<Node> q = new LinkedList<>();
+		q.add(node);
+		
+		Node temp = null;
+		Node keyNode = null;
+		
+		//find the key node to be deleted 
+		while(!q.isEmpty()) {
+			temp = q.peek();
+			q.poll();
+			
+			if(temp.key == val) {
+				keyNode = temp;
+			}
+			if(temp.left != null) {
+				q.add(temp.left);
+			}
+			if(temp.right != null) {
+				q.add(temp.right);
+			}
+			
+		}
+		if(keyNode != null) {
+			int x = temp.key;
+			deleteDeepest(node, temp);
+			keyNode.key = x;
+		}
+		
+		return node;
+	}
+	
+	void deleteDeepest(Node root, Node keyNode) {
+		Queue<Node> q = new LinkedList<>();
+		q.add(root);
+		Node temp;
+		while(!q.isEmpty()) {
+			temp = q.peek();
+			q.poll();
+			
+			if(temp == keyNode) {
+				temp = null;
+				return;
+			}
+			if(temp.right != null) {
+				if(temp.right == keyNode) {
+					temp = null;
+					return;
+				} else {
+					q.add(temp.right);
+				}
+			}
+			if(temp.left != null) {
+				if(temp.left == keyNode) {
+					temp = null;
+					return;
+				} else {
+					q.add(temp.left);
+				}
+			}
 		}
 	}
 	 
@@ -114,13 +187,12 @@ public class BinaryTreeeBasics {
 		
 		BinaryTreeeBasics bt = new BinaryTreeeBasics();
 		
-		bt.root = new Node(1);
-		
-		bt.root.left = new Node(2);
-		bt.root.right = new Node(3);
-		
-		bt.root.left.left = new Node(4);
-		bt.root.left.right = new Node(5);
+		bt.root = new Node(10); 
+        bt.root.left = new Node(11); 
+        bt.root.left.left = new Node(7); 
+        bt.root.right = new Node(9); 
+        bt.root.right.left = new Node(15); 
+        bt.root.right.right = new Node(8); 
 		
 		System.out.print("InOrder Traversal: ");
 		bt.printInorder(bt.root);
@@ -138,8 +210,14 @@ public class BinaryTreeeBasics {
 		bt.printLevelOrder(bt.root);
 		System.out.println();
 		
-		bt.insert(bt.root, 6);
+		System.out.println();
+		bt.insert(bt.root, 12);
 		System.out.print("InOrder Traversal after Insert: ");
+		bt.printInorder(bt.root);
+		System.out.println();
+		
+		bt.delete(bt.root, 7);
+		System.out.print("InOrder Traversal after Delete: ");
 		bt.printInorder(bt.root);
 		System.out.println();
 		
