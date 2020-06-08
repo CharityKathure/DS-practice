@@ -17,6 +17,8 @@ class Node{
 public class BinaryTreeeBasics {
 	Node root;
 	
+	
+	//Depth First Traversal//
 	void printInorder(Node node) {
 		if(node == null) {
 			return; 
@@ -46,6 +48,16 @@ public class BinaryTreeeBasics {
 			printPreOrder(node.right);
 		}
 	}
+	//End of Depth First Traversal//
+	
+	
+	//Breadth First Traversal//
+	void printLevelOrder(Node node) {
+		int h = treeHeight(node);
+		for(int i=1; i<=h; i++) {
+			printGivenLevel(node, i);
+		}
+	}
 	
 	int treeHeight(Node node) {
 		//check if tree is empty and return 0 if empty
@@ -64,13 +76,6 @@ public class BinaryTreeeBasics {
 		}
 	}
 	
-	void printLevelOrder(Node node) {
-		int h = treeHeight(node);
-		for(int i=1; i<=h; i++) {
-			printGivenLevel(node, i);
-		}
-	}
-	
 	void printGivenLevel(Node node, int level) {
 		if(node == null) {
 			return;
@@ -83,11 +88,12 @@ public class BinaryTreeeBasics {
 			printGivenLevel(node.right, level-1);
 		}
 	}
+	//End of Breadth First Traversal//
 	
 	
+	//Insert Value into a binary tree//
 	void insert(Node node, int val) {
 		Queue<Node> q = new LinkedList<>();
-		
 		q.add(node);
 		while(!q.isEmpty()) {
 			node = q.peek();
@@ -108,7 +114,10 @@ public class BinaryTreeeBasics {
 		
 		}
 	}
+	//End of insert value into a binary tree//
 	
+	
+	//Delete node from binary tree given it's value//
 	Node delete(Node node, int val) {
 		if(node == null) {
 			return null;
@@ -127,7 +136,7 @@ public class BinaryTreeeBasics {
 		Node temp = null;
 		Node keyNode = null;
 		
-		//find the key node to be deleted 
+		//find the key node to be deleted(node with the value to be deleted)
 		while(!q.isEmpty()) {
 			temp = q.peek();
 			q.poll();
@@ -143,10 +152,12 @@ public class BinaryTreeeBasics {
 			}
 			
 		}
+		//if node is found...
 		if(keyNode != null) {
-			int x = temp.key;
+			//delete the deepest rightmost node
 			deleteDeepest(node, temp);
-			keyNode.key = x;
+			//Replace the node to be deleted with the rightmost
+			keyNode.key = temp.key;
 		}
 		
 		return node;
