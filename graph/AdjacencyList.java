@@ -3,7 +3,7 @@ package graphs;
 import java.util.ArrayList;
 
 /*Vector implementation*/
-public class AdjacencyMatrix {
+public class AdjacencyList {
 	
 	static void addEdge(ArrayList<ArrayList<Integer>> adj, int a, int b) {
 		adj.get(a).add(b);
