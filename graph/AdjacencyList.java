@@ -1,6 +1,9 @@
 package graphs;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /*Vector implementation*/
 public class AdjacencyList {
@@ -19,6 +22,49 @@ public class AdjacencyList {
 				System.out.print(" -> " + ad.get(j));
 			}
 			System.out.println();
+		}
+	}
+	
+	static void BFS(ArrayList<ArrayList<Integer>> adj, int s) {
+
+		boolean visited[] = new boolean[adj.size()];
+		
+		Queue<Integer> q = new LinkedList<>();		
+		visited[s] = true;
+		q.add(s);
+		
+		while(!q.isEmpty()) {
+			s = q.poll();
+			
+			System.out.print(s + " ");
+			
+			Iterator<Integer> i = adj.get(s).listIterator();
+			while(i.hasNext()) {
+				int n = i.next();
+				if(!visited[n]) {
+					visited[n] = true;
+					q.add(n);
+				}
+			}
+		}
+	}
+	
+	static void DFS(ArrayList<ArrayList<Integer>> adj, int s) {
+		boolean visited[] = new boolean[adj.size()];
+		
+		DFSUtil(adj, visited, s);
+	}
+	static void DFSUtil(ArrayList<ArrayList<Integer>> adj, boolean visited[], int s) {
+		
+		visited[s] = true;
+		System.out.print(s + " ");
+		
+		Iterator<Integer> i = adj.get(s).listIterator();
+		while(i.hasNext()) {
+			int n = i.next();
+			if(!visited[n]) {
+				DFSUtil(adj, visited, n);
+			}
 		}
 	}
 
@@ -40,5 +86,14 @@ public class AdjacencyList {
 		
 		printGraph(adj);
 		
+		System.out.println();
+		
+		System.out.print("Breadth First Search: ");
+		BFS(adj, 2);
+		
+		System.out.println();
+		
+		System.out.print("Depth First Search: ");
+		DFS(adj, 2);
 	}
 }
