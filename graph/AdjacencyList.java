@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /*Vector implementation*/
 public class AdjacencyList {
@@ -49,11 +50,33 @@ public class AdjacencyList {
 		}
 	}
 	
+	static void findPathDFS(ArrayList<ArrayList<Integer>> adj, int start, int end) {
+		boolean visited[] = new boolean[adj.size()];
+		findPathUtilDFS(adj, visited, start, end);
+ 	}
+	
+	static void findPathUtilDFS(ArrayList<ArrayList<Integer>> adj, boolean visited[], int start, int end) {
+		visited[start] = true;
+		System.out.print(start + " ");
+		if(start == end) {
+			return;
+		}
+		
+		Iterator<Integer> i = adj.get(start).listIterator();
+		while(i.hasNext()) {
+			int n = i.next();
+			if(!visited[n]) {
+				findPathUtilDFS(adj, visited, n, end);
+			}
+		}
+	}
+	
 	static void DFS(ArrayList<ArrayList<Integer>> adj, int s) {
 		boolean visited[] = new boolean[adj.size()];
 		
 		DFSUtil(adj, visited, s);
 	}
+	
 	static void DFSUtil(ArrayList<ArrayList<Integer>> adj, boolean visited[], int s) {
 		
 		visited[s] = true;
@@ -66,6 +89,30 @@ public class AdjacencyList {
 				DFSUtil(adj, visited, n);
 			}
 		}
+	}
+	
+	static void iterativeDFS(ArrayList<ArrayList<Integer>> adj, int s) {
+		boolean visited[] = new boolean[adj.size()];
+		
+		Stack<Integer> st = new Stack<>();
+		st.push(s);
+		while(!st.isEmpty()) {
+			s = st.peek();
+			st.pop();
+			if(!visited[s]) {
+				System.out.print(s + " ");
+				visited[s] = true;
+			}
+			
+			Iterator<Integer> i = adj.get(s).listIterator();
+			while(i.hasNext()) {
+				int n = i.next();
+				if(!visited[n]) {
+					st.push(n);
+				}
+			}
+		}
+		
 	}
 
 	public static void main(String args[]) {
@@ -87,13 +134,20 @@ public class AdjacencyList {
 		printGraph(adj);
 		
 		System.out.println();
-		
 		System.out.print("Breadth First Search: ");
 		BFS(adj, 2);
 		
 		System.out.println();
-		
 		System.out.print("Depth First Search: ");
 		DFS(adj, 2);
+		
+		System.out.println();
+		System.out.print("Depth First Search(Iterative): ");
+		iterativeDFS(adj, 2);
+		
+		System.out.println();
+		System.out.print("Path from 2 t0 3: ");
+		findPathDFS(adj, 2, 3);
+		
 	}
 }
