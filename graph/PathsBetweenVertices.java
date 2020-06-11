@@ -19,14 +19,12 @@ public class PathsBetweenVertices {
 	}
 	
 	static int countPathsUtil(int s, int d, int pathCount) {
-		
-		if(s==d) {
+		if(s == d) {
 			pathCount++;
 		} else {
 			Iterator<Integer> i = adj.get(s).listIterator();
 			while(i.hasNext()) {
 				int n = i.next();
-				
 				pathCount = countPathsUtil(n, d, pathCount);
 			}
 		}
@@ -51,7 +49,7 @@ public class PathsBetweenVertices {
 		 int start = 0;
 		 int end = 3;
 		
-		 System.out.println("No. of Paths:- " + countPaths(start, end));
+		 System.out.println("No. of Paths between " + start + " " + "and " + end + " is:- " + countPaths(start, end));
 	}
 
 }
