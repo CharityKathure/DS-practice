@@ -119,7 +119,7 @@ public class MotherVertex {
 		addEdge(0, 2);
 		addEdge(3, 4);
 		
-		System.out.println("BRUTEFORCE METHOD: ");
+		System.out.println("BRUTE FORCE METHOD - O(V*V): ");
 		System.out.println("\t Mother Vertices: ");
 		DFS(0);
 		
