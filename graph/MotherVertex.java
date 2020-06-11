@@ -32,7 +32,7 @@ public class MotherVertex {
 			}
 		}
 		if(allVerticesofS.size() == graph.size()) {
-			System.out.println("\t"+s);
+			System.out.println("\t\t "+s);
 		}
 	}
 	
@@ -74,7 +74,8 @@ public class MotherVertex {
 				lfv = i;
 			}
 		}
-		System.out.println("Last finished vertex: " + lfv);
+		System.out.println("KOSORAJU STRONGLY CONNECTED METHOD - O(V): ");
+		System.out.println("\t Last finished vertex: " + lfv);
 		/*check if the last finished vertex is a mother vertex*/
 		//Step 1: reset all visited vertices to false
 		for(int i=0; i<graph.size(); i++)
@@ -118,12 +119,12 @@ public class MotherVertex {
 		addEdge(0, 2);
 		addEdge(3, 4);
 		
-		
-		System.out.println("Mother Vertices(Using BruteForce Method): ");
+		System.out.println("BRUTEFORCE METHOD: ");
+		System.out.println("\t Mother Vertices: ");
 		DFS(0);
 		
 		System.out.println();
-		System.out.println("Mother Vertices(KOSORAJU STRONGLY CONNECTED Method O(V)): " + findMother());
+		System.out.println("\t Mother Vertex: " + findMother());
 		
 	}
 
