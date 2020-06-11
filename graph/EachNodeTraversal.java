@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
+//to be optimized. current time complexity is O(V*V)
+	
 public class EachNodeTraversal {
 	
 	static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
