@@ -69,10 +69,12 @@ public class MotherVertex {
 		/*get last finished vertex*/
 		int lfv = 0;
 		for(int i=0; i<graph.size(); i++) {
-			DFSUtil(visited, i);
-			lfv = i;
+			if(!visited[i]) {
+				DFSUtil(visited, i);
+				lfv = i;
+			}
 		}
-		
+		System.out.println("Last finished vertex: " + lfv);
 		/*check if the last finished vertex is a mother vertex*/
 		//Step 1: reset all visited vertices to false
 		for(int i=0; i<graph.size(); i++)
@@ -118,7 +120,7 @@ public class MotherVertex {
 		
 		
 		System.out.println("Mother Vertices(Using BruteForce Method): ");
-		DFS(1);
+		DFS(0);
 		
 		System.out.println();
 		System.out.println("Mother Vertices(KOSORAJU STRONGLY CONNECTED Method O(V)): " + findMother());
