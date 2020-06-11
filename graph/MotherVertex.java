@@ -83,7 +83,7 @@ public class MotherVertex {
 		
 		//Step 3: iterate through the visited array, if any vertex not visited return -1... to mean the is no mother vertex, 
 		for(int i=0; i<graph.size(); i++) {
-			if(visited[i] == false) {
+			if(!visited[i]) {
 				return -1;
 			}
 		}
@@ -91,11 +91,12 @@ public class MotherVertex {
 	}
 	static void DFSUtil(boolean visited[], int s) {
 		visited[s] = true;
-		System.out.print(s + " ");
+		
 		Iterator<Integer> i = graph.get(s).listIterator();
 		while(i.hasNext()) {
 			int n = i.next();
 			if(!visited[n]) {
+				visited[n] = true;
 				DFSUtil(visited, n);
 			}
 		}
