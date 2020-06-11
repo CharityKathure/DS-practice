@@ -7,7 +7,7 @@ import java.util.Queue;
 
 //to be optimized. current time complexity is O(V*V)
 	
-public class EachNodeTraversal {
+public class TraversalEachVertex {
 	
 	static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 	
