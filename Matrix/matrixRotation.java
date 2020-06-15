@@ -7,7 +7,7 @@ public class matrixRotation {
 	
 	static void rotate(int r, int c, int mat[][]) {
 		int row = 0, col = 0; 
-        int prev, curr; 
+		int prev, curr; 
 		
 		while(row < r && col < c) {
 			if(row + 1 == r || col + 1 == c) 
@@ -51,24 +51,25 @@ public class matrixRotation {
 			}
 			col++;
 		}
-		
-		for(int i=0; i < R; i++) {
-			for(int j=0; j < C; j++) 
-			System.out.print( mat[i][j] + " "); 
-            System.out.print("\n");
-		}
+		printMatrix(mat);
 	}
 	
-	static void printmat(int mat[][]){
-		
+	static void printMatrix(int mat[][]){
+		for(int i=0; i < R; i++) {
+			for(int j=0; j < C; j++) {
+				System.out.print( mat[i][j] + " "); 
+			}
+			System.out.print("\n");
+		}
 	}
 	public static void main(String args[]) {
 		int mat[][] = {
-							{1, 2, 3, 4}, 
-							{5, 6, 7, 8}, 
-							{9, 10, 11, 12}, 
-							{13, 14, 15, 16}
-						};
+				{1, 2, 3, 4}, 
+				{5, 6, 7, 8}, 
+				{9, 10, 11, 12}, 
+				{13, 14, 15, 16}
+			};
+		
 		rotate(R, C, mat);
 	}
 }
