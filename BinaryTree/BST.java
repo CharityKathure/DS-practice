@@ -57,16 +57,19 @@ public class BST {
 		} else if(key > root.key) {
 			root.right = deleteKey(root.right, key);
 		} else {
+			
 			//if equal to current node//
 			if(root.left == null) {
 				return root.right;
 			} else if(root.right == null) {
 				return root.left;
 			}
+			
 			//if both left and right are not null//
 			//get smallest node in the right(the Successor)
 			root.key = minVal(root.right);
 			root.right = deleteKey(root.right, root.key);
+			
 		}
 		
 		return root;
