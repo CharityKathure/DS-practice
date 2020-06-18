@@ -47,6 +47,41 @@ public class BST {
 		}
 	}
 	
+	
+	Node deleteKey(Node root, int key) {
+		if(root == null) {
+			return root;
+		}
+		if(key < root.key) {
+			root.left = deleteKey(root.left, key);
+		} else if(key > root.key) {
+			root.right = deleteKey(root.right, key);
+		} else {
+			//if equal to current node//
+			if(root.left == null) {
+				return root.right;
+			} else if(root.right == null) {
+				return root.left;
+			}
+			//if both left and right are not null//
+			//get smallest node in the right(the Successor)
+			root.key = minVal(root.right);
+			root.right = deleteKey(root.right, root.key);
+		}
+		
+		return root;
+	}
+	
+	int minVal(Node root) {
+		int min = root.key;
+		while(root.left != null) {
+			min = root.left.key;
+			root = root.left;
+		}
+		
+		return min;
+	}
+	
 	void inOrder(Node root) {
 		if(root == null) {
 			return;
@@ -67,9 +102,15 @@ public class BST {
         tree.insert(60); 
         tree.insert(80); 
         
-        tree.inOrder(tree.root);
+        Node n = tree.root;
+        tree.inOrder(n);
         
-        //tree.inOrder(tree.search(tree.root, 80));
+        System.out.println();
+        
+        tree.deleteKey(n, 70);
+        tree.inOrder(n);
+        
+        //tree.inOrder(tree.search(n, 80));
 	}
 
 }
