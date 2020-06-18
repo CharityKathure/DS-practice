@@ -98,22 +98,22 @@ public class BST {
 		BST tree = new BST();
 		
 		tree.insert(50); 
-        tree.insert(30); 
-        tree.insert(20); 
-        tree.insert(40); 
-        tree.insert(70); 
-        tree.insert(60); 
-        tree.insert(80); 
-        
-        Node n = tree.root;
-        tree.inOrder(n);
-        
-        System.out.println();
-        
-        tree.deleteKey(n, 70);
-        tree.inOrder(n);
-        
-        //tree.inOrder(tree.search(n, 80));
+		tree.insert(30); 
+		tree.insert(20); 
+		tree.insert(40); 
+		tree.insert(70); 
+		tree.insert(60); 
+		tree.insert(80); 
+
+		Node n = tree.root;
+		tree.inOrder(n);
+
+		System.out.println();
+
+		tree.deleteKey(n, 70);
+		tree.inOrder(n);
+
+        	//tree.inOrder(tree.search(n, 80));
 	}
 
 }
