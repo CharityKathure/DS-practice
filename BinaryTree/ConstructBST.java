@@ -1,5 +1,7 @@
 package binarySearchTree;
 
+import java.util.Stack;
+
 /*
  * Construct Binary Search Tree from a given pre-order traversal
  */
@@ -16,7 +18,7 @@ class Node{
 
 public class ConstructBST {
 	
-	static Node constructTree(int pre[], int start, int end, int size) {
+	static Node constructTreeV1(int pre[], int start, int end, int size) {
 		//Finished - Complexity O(N^2)
 		
 		//base case
@@ -44,29 +46,39 @@ public class ConstructBST {
 		//use index obtained to divide the pre-order array into two; 
 			//1. from start to i-1 
 			//2. from i to n
-		root.left = constructTree(pre, start, i - 1, size);
-		root.right = constructTree(pre, i, end, size);
+		root.left = constructTreeV1(pre, start, i - 1, size);
+		root.right = constructTreeV1(pre, i, end, size);
 		
 		return root;
 	}
 	
-	static Node constructTreeV2(int pre[], int startIndex, int key, int min, int max, int size) {
-		//Not finished -- Complexity O(N)
+	static Node constructTreeV2(int pre[], int size) {
+		// Complexity O(N)
 		
-		if(min >= size) {
-			return null;
-		}
+		//first val is root
+		Node root = new Node(pre[0]);
 		
-		Node root = null;
-		if(key > min && key < max) {
-			root = new Node(key);
-			startIndex += 1;
+		Stack<Node> s = new Stack<>();
+		s.push(root);
+		
+		//iterate through the other keys in pre[]
+		for(int i=1; i<size; i++) {
+			Node temp = null;
+			//while stack is not empty and pre[i] is greater than value on top keep popping 
+			while(!s.isEmpty() && pre[i] > s.peek().key) {
+				temp = s.pop();
+			}
 			
-			if(startIndex < size) {
-				root.left = constructTreeV2(pre, startIndex, pre[startIndex], min, key, size);
-				root.right = constructTreeV2(pre, startIndex, pre[startIndex], key, max, size);
+			if(temp != null) {
+				temp.right = new Node(pre[i]);
+				s.push(temp.right);
+			} else {
+				temp = s.peek();
+				temp.left = new Node(pre[i]);
+				s.push(temp.left);
 			}
 		}
+		
 		return root;
 	}
 	
@@ -85,9 +97,15 @@ public class ConstructBST {
 		int start = 0;
 		int end = size;
 		
-		Node root = constructTree(pre, start, end, size);
+		Node root1 = constructTreeV1(pre, start, end, size);
+		Node root2 = constructTreeV2(pre, size);
 		
-		//Node root = constructTreeV2(pre, start, pre[0], Integer.MIN_VALUE, Integer.MAX_VALUE, size);
-		printInorder(root);
+		System.out.print("Using O(N^2) Time Complexity: ");
+		printInorder(root1);
+		
+		System.out.println("");
+		
+		System.out.print("Using O(N) Time Complexity: ");
+		printInorder(root2);
 	}
 }
