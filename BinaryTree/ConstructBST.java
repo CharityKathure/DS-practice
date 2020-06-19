@@ -17,6 +17,8 @@ class Node{
 public class ConstructBST {
 	
 	static Node constructTree(int pre[], int start, int end, int size) {
+		//Finished - Complexity O(N^2)
+		
 		//base case
 		if(start >= size || start > end) {
 			return null;
@@ -48,6 +50,26 @@ public class ConstructBST {
 		return root;
 	}
 	
+	static Node constructTreeV2(int pre[], int startIndex, int key, int min, int max, int size) {
+		//Not finished -- Complexity O(N)
+		
+		if(min >= size) {
+			return null;
+		}
+		
+		Node root = null;
+		if(key > min && key < max) {
+			root = new Node(key);
+			startIndex += 1;
+			
+			if(startIndex < size) {
+				root.left = constructTreeV2(pre, startIndex, pre[startIndex], min, key, size);
+				root.right = constructTreeV2(pre, startIndex, pre[startIndex], key, max, size);
+			}
+		}
+		return root;
+	}
+	
 	static void printInorder(Node root) {
 		if(root == null) {
 			return;
@@ -64,6 +86,8 @@ public class ConstructBST {
 		int end = size;
 		
 		Node root = constructTree(pre, start, end, size);
+		
+		//Node root = constructTreeV2(pre, start, pre[0], Integer.MIN_VALUE, Integer.MAX_VALUE, size);
 		printInorder(root);
 	}
 }
