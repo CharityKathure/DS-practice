@@ -57,7 +57,7 @@ public class LinkedList {
 		last.next = newNode;
 	}
 	
-	static void deleteNode(int d) {
+	static void deleteNodeGivenKey(int d) {
 		Node temp = head, prev = null;
 		
 		//if node to be deleted is head
@@ -84,15 +84,44 @@ public class LinkedList {
 		
 	}
 	
+	static void deleteNodeGivenPos(int pos) {
+		//if node is empty
+		if(head == null) {
+			return;
+		}
+		
+		Node temp = head;
+		//if node to be deleted is the head
+		if(temp != null && pos == 0) {
+			head = temp.next;
+		}
+		
+		//find previous of the node to be deleted
+		for(int i = 0; temp != null && i < pos-1; i++) {
+			temp = temp.next;
+		}
+		
+		//if node is no found
+		if(temp == null || temp.next == null) {
+			return;
+		}
+		
+		//detach
+		Node next = temp.next.next; 
+        temp.next = next;
+	}
+	
 	public static void main(String args[]) {
 		LinkedList n = new LinkedList();
 		
 		n.head = new Node(1);
 		Node second = new Node(2);
 		Node third = new Node(3);
+		Node fourth = new Node(7);
 		
 		n.head.next = second;
 		second.next = third;
+		third.next = fourth;
 		
 		//traversal
 		printList();
@@ -110,7 +139,11 @@ public class LinkedList {
 		System.out.print("\n");
 		printList();
 		
-		deleteNode(1);
+		deleteNodeGivenKey(1);
+		System.out.print("\n");
+		printList();
+		
+		deleteNodeGivenPos(1);
 		System.out.print("\n");
 		printList();
 	}
