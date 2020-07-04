@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 public class DuplicatedCharacters {
 	
-	static ArrayList duplicatedChars(String s) {
+	static ArrayList<Character> duplicatedChars(String s) {
 		ArrayList<Character> l = new ArrayList<>();
 		Hashtable<Character, Integer> h = new Hashtable<>();
 		for(int i=0; i<s.length(); i++) {
@@ -19,8 +19,6 @@ public class DuplicatedCharacters {
 				h.put(s.charAt(i), 1);
 			}
 		}
-		
-		
 		
 		Iterator<Map.Entry<Character, Integer>> itr = h.entrySet().iterator();
 		Entry<Character, Integer> entry = null;
