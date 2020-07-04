@@ -12,8 +12,8 @@ package stringManipulation;
 
 public class Anagram {
 	static boolean anagramCheck(String s1, String s2) {
-		s1 = s1.replaceAll("\\s+","");
-		s2 = s2.replaceAll("\\s+","");
+		s1 = s1.replaceAll("\\s+","").toUpperCase();
+		s2 = s2.replaceAll("\\s+","").toUpperCase();
 		
 		if(s1.length() != s2.length()) {
 			return false;
@@ -31,7 +31,7 @@ public class Anagram {
 		
 	public static void main(String args[]) {
 		String s1 = "Dormitory";
-		String s2 = "Dirtyroom";
+		String s2 = "Dirty room";
 		
 		System.out.print(anagramCheck(s1, s2));
 	}
