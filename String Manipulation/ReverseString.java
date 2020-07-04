@@ -26,12 +26,10 @@ public class ReverseString {
 	}
 	
 	public static void main(String args[]) {
-		String s = "String";
+		String s = "Valentino Shimanyula";
 		
 		String rs = reverseStringInPlace(s);
 		System.out.print("Reversed: " + rs);
-		
-		
 	}
 
 }
