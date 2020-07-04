@@ -6,7 +6,7 @@ import java.util.Stack;
 public class ReverseString {
 	
 	//1st Method: using character array
-		static String reverseString(String s) {
+		static String reverseStringUsingArray(String s) {
 			StringBuffer str = new StringBuffer();
 			char c[] = s.toCharArray();
 			for(int i=s.length()-1; i>=0; i--) {
@@ -17,7 +17,7 @@ public class ReverseString {
 	
 	
 	//2nd Method: use a structure that supports last in First out, to aid in reversal.
-	static String reverseStringInPlace(String s) {
+	static String reverseStringUsingStack(String s) {
 		Stack<Character> stack = new Stack<>();
 		
 		//Populate Stack with String characters
@@ -62,11 +62,11 @@ public class ReverseString {
 	
 	
 	public static void main(String args[]) {
-		String s = "Valentino Shimanyula";
+		String s = "Valentino Shimanyi";
 		
 		String rs = reverseStringPtrs(s);
-		//String rs = reverseString(s);
-		//String rs = reverseStringInPlace(s);
+		//String rs = reverseStringUsingArray(s);
+		//String rs = reverseStringUsingStack(s);
 		
 		System.out.print("Reversed: " + rs);
 		
