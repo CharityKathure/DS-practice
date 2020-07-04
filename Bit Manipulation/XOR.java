@@ -30,9 +30,32 @@ public class XOR {
 		return 0;
 	}
 	
+	static int xorArray(int arr[]) {
+		
+		int arrXOR = 0;
+		for(int i = 0; i<arr.length; i++) {
+			arrXOR = arrXOR ^ arr[i];
+		}
+		
+		return arrXOR;
+	}
+	
+	static void printArray(int arr[]){
+		for(int i = 0; i< arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+	}
+	
 	public static void main(String args[]) {
 		int num = 7;
-		System.out.println(xor(num));
+		System.out.println("XOR of " + num + ": " + xor(num));
+		
+		System.out.print("\n");
+		int arr[] = { 3, 9, 12, 13, 15 }; 
+		System.out.print("XOR of ");
+		printArray(arr);
+		System.out.print(" : " + xorArray(arr));
+		
 	}
 
 }
