@@ -16,8 +16,12 @@ public class PowerofTwo {
 		return true;
 	}
 	
-	 //return 1 if true and 0 if not
+	 
 	static boolean  isPowerofTwo_(int num) {
+		/*num is a power of 2 if and only if num (in binary representation) 
+		and(&) num - 1(in binary representation)
+		is zero*/
+		
 		if(num == 0) {
 			return false;
 		}
