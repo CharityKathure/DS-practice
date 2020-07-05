@@ -6,7 +6,7 @@ package stringManipulation;
  * 1. Remove spaces from both strings
  * 2. if length of string 1 is different from length of string 2 the two strings are not anagrams
  * 3. else if lengths are the same:
- * 4. 		check if each characters of string 1is in string 2
+ * 4. 		check if each characters of string 1 is in string 2
  * 5. 		if any character in one of the strings is not in the other, then the two strings are not anagrams
  * **/
 
