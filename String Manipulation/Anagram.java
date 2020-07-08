@@ -7,7 +7,8 @@ package stringManipulation;
  * 2. if length of string 1 is different from length of string 2 the two strings are not anagrams
  * 3. else if lengths are the same:
  * 4. 		check if each characters of string 1 is in string 2
- * 5. 		if any character in one of the strings is not in the other, then the two strings are not anagrams
+ * 5. 		check if each character of string 2 is in string 2
+ * 6. 		if any character in one of the strings is not in the other, then the two strings are not anagrams		
  * **/
 
 public class Anagram {
@@ -18,8 +19,8 @@ public class Anagram {
 		if(s1.length() != s2.length()) {
 			return false;
 		} else {
-			char c1[] = s1.toCharArray();
 			
+			char c1[] = s1.toCharArray();
 			for(int i = 0; i<c1.length; i++) {
 				if (!s2.contains(Character.toString(c1[i]))) {
 					return false;
@@ -32,6 +33,7 @@ public class Anagram {
 					return false;
 				}
 			}
+			
 			return true;
 		}
 	}
