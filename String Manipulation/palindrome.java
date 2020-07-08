@@ -1,12 +1,9 @@
 package stringManipulation;
 
-/**1. rotate string
- * 2. check if string is equal to original string
-**/
-
 public class Palindrome {
 	
 	static boolean palindrome(String s) {
+		/*1. rotate string 2. check if string is equal to original string*/
 		s = s.replaceAll(" ", "").toUpperCase();
 		
 		char[] c = s.toCharArray();
@@ -26,6 +23,7 @@ public class Palindrome {
 	}
 	
 	static String longestPalindrome(String s) {
+		/*Given a string, find the longest substring which is palindrome.*/
 		String longestPalindrome = "";
 		for(int i=0; i<=s.length(); i++) {
 			for(int j=i; j<=s.length(); j++) {
