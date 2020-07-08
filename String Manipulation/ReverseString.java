@@ -51,13 +51,7 @@ public class ReverseString {
 			c[l] = temp;
 		}
 		
-		
-		StringBuilder str = new StringBuilder();
-		for(int i=0; i< c.length; i++) {
-			str.append(c[i]);
-		}
-		
-		return str.toString();
+		return new String(c);
 	}
 	
 	
