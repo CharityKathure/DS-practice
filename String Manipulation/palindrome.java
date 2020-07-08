@@ -5,17 +5,26 @@ public class Palindrome {
 	static boolean palindrome(String s) {
 		/*1. rotate string 2. check if string is equal to original string*/
 		s = s.replaceAll(" ", "").toUpperCase();
-		
-		char[] c = s.toCharArray();
-		int l = 0;
-		int r = s.length() - 1;
-		for(l=0; l<r; l++, r--) {
-			char temp = c[r];
-			c[r] = c[l];
-			c[l] = temp;
+		int mid = s.length()/2;
+		String sub1 = s.substring(0, mid);
+		String sub2 = "";
+		if(s.length()%2 > 0) {
+			sub2 = s.substring(mid+1, s.length());
+		} else {
+			sub2 = s.substring(mid, s.length());
 		}
 		
-		if(s.equals(new String(c))) {
+		char[] c2 = sub2.toCharArray();
+		int l = 0;
+		int r = sub2.length() - 1;
+		for(l=0; l<r; l++, r--) {
+			char temp = c2[r];
+			c2[r] = c2[l];
+			c2[l] = temp;
+		}
+		
+		sub2 = new String(c2);
+		if(sub1.equals(sub2)) {
 			return true;
 		} else {
 			return false;
@@ -38,7 +47,7 @@ public class Palindrome {
 	}
 	
 	public static void main(String args[]) {
-		String s = "forgeeksskeegfor";
+		String s = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth";
 		System.out.println(longestPalindrome(s));
 	}
 	
