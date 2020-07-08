@@ -1,5 +1,8 @@
 package stringManipulation;
 
+import java.util.Arrays;
+import java.util.Hashtable;
+
 /**write a program that checks if two strings are anagrams of each other
  * 
  * pseudocode:
@@ -35,11 +38,66 @@ public class Anagram {
 			return true;
 		}
 	}
+	
+	static boolean anagram(String s1, String s2) {
+		s1 = s1.replaceAll("\\s+","").toUpperCase();
+		s2 = s2.replaceAll("\\s+","").toUpperCase();
+		
+		if(s1.length() != s2.length()) {
+			return false;
+		}
+		
+		char[] s1CharArray = s1.toCharArray();
+		char[] s2CharArray = s2.toCharArray();
+		
+		Arrays.sort(s1CharArray);
+		Arrays.sort(s2CharArray);
+		
+		if(!Arrays.equals(s1CharArray, s2CharArray)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	static boolean anagramUsingHashTable(String s1, String s2) {
+		s1 = s1.replaceAll("\\s+","").toUpperCase();
+		s2 = s2.replaceAll("\\s+","").toUpperCase();
+		
+		if(s1.length() != s2.length()) {
+			return false;
+		}
+		
+		Hashtable<Character, Integer> h1 = new Hashtable<>();
+		for(int i=0; i<s1.length(); i++) {
+			if(!h1.containsKey(s1.charAt(i))) {
+				h1.put(s1.charAt(i), 1);
+			} else {
+				int charCount = h1.get(s1.charAt(i));
+				h1.put(s1.charAt(i), charCount+1);
+			}
+		}
+		
+		Hashtable<Character, Integer> h2 = new Hashtable<>();
+		for(int i=0; i<s2.length(); i++) {
+			if(!h2.containsKey(s2.charAt(i))) {
+				h2.put(s2.charAt(i), 1);
+			} else {
+				int charCount = h2.get(s2.charAt(i));
+				h2.put(s2.charAt(i), charCount+1);
+			}
+		}
+		if(!h1.equals(h2)) {
+			return false;
+		}
+		
+		return true;
+	}
 		
 	public static void main(String args[]) {
-		String s1 = "Dormitory";
-		String s2 = "Dirty room";
+		String s1 = " Dormito ry";
+		String s2 = "dirty room";
 		
-		System.out.print(anagramCheck(s1, s2));
+		System.out.print(anagramUsingHashTable(s1, s2));
 	}
 }
