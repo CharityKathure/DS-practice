@@ -19,7 +19,6 @@ public class Anagram {
 		if(s1.length() != s2.length()) {
 			return false;
 		} else {
-			
 			char c1[] = s1.toCharArray();
 			for(int i = 0; i<c1.length; i++) {
 				if (!s2.contains(Character.toString(c1[i]))) {
@@ -33,7 +32,6 @@ public class Anagram {
 					return false;
 				}
 			}
-			
 			return true;
 		}
 	}
