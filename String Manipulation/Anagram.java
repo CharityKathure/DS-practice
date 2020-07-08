@@ -19,9 +19,16 @@ public class Anagram {
 			return false;
 		} else {
 			char c1[] = s1.toCharArray();
-			char c2[] = s2.toCharArray();
+			
 			for(int i = 0; i<c1.length; i++) {
-				if (!String.valueOf(c2).contains(Character.toString(c1[i]))) {
+				if (!s2.contains(Character.toString(c1[i]))) {
+					return false;
+				}
+			}
+			
+			char c2[] = s2.toCharArray();
+			for(int i = 0; i<c2.length; i++) {
+				if (!s1.contains(Character.toString(c2[i]))) {
 					return false;
 				}
 			}
