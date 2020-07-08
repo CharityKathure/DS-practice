@@ -96,7 +96,7 @@ public class Anagram {
 		
 	public static void main(String args[]) {
 		String s1 = " Dormito ry";
-		String s2 = "dirty room";
+		String s2 = "dirt y room";
 		
 		System.out.print(anagramUsingHashTable(s1, s2));
 	}
